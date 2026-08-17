@@ -4,9 +4,9 @@ import { ValidationPipe } from '@nestjs/common';
 import { LoggingInterceptor } from './libs/interceptor/Logging.Interceptor';
 
 async function bootstrap() {
-	const app = await NestFactory.create(AppModule);
+	const app = await NestFactory.create(AppModule); //Call
 	app.useGlobalPipes(new ValidationPipe());
 	app.useGlobalInterceptors(new LoggingInterceptor());
-	await app.listen(process.env.PORT_API ?? 3000);
+	await app.listen(process.env.PORT_API ?? 3000);// Dont.env fayilda
 }
 bootstrap();

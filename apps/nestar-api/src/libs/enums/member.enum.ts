@@ -22,9 +22,9 @@ registerEnumType(MemberStatus, {
     name: "MemberStatus",
 });
 
-registerEnumType(MemberType, {
-    name: "MemberType",
-});
+// registerEnumType(MemberType, {
+//     name: "MemberType",
+// });
 
 export enum MemberAuthType {
     PHONE = "PHONE",

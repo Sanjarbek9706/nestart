@@ -24,7 +24,7 @@ export class Member {
     @Field(() => String)
     memberNick: String;
 
-    memberPassword?: string;
+    memberPassword: string;
 
     @Field(() => String, {nullable: true})
     memberFullName?: string;
@@ -49,15 +49,15 @@ export class Member {
 
     @Field(() => Int)
     memberFollowings: number;
+    
+    @Field(() => Int)
+    memberPoints: number;
 
     @Field(() => Int)
     memberLikes: number;
 
     @Field(() => Int)
     memberViews: number;
-
-    @Field(() => Int)
-    memberPoints: number;
 
     @Field(() => Int)
     memberComments: number;
@@ -76,8 +76,8 @@ export class Member {
     deletedAt?: Date;
     
     @Field(() => Date)
-    createdAt?: Date;
+    createdAt: Date;
 
     @Field(() => Date)
-    updatedAt?: Date;
+    updatedAt: Date;
 }

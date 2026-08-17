@@ -11,7 +11,7 @@ import { T } from './libs/types/common';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot(), //.env fayilni o'qish va invaletir varibilarni amaolga oshiryabmiz
     GraphQLModule.forRoot({
      driver: ApolloDriver,
      playground: true,
@@ -29,7 +29,7 @@ import { T } from './libs/types/common';
 				return graphQLFormattedError;
 			}
   }),
-    ComponentsModule,
+    ComponentsModule, // backent asosiy mantiqi shu modelga jamlagan
     DatabaseModule
   ],
   controllers: [AppController],
