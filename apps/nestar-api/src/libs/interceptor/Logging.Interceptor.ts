@@ -8,7 +8,7 @@ export class LoggingInterceptor implements NestInterceptor {
 
     private readonly logger: Logger = new Logger();
 
-    intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+     public intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
         const recordTime = Date.now();
         const requestType = context.getType<GqlContextType>();
         
