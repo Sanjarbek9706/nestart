@@ -11,15 +11,16 @@ import { T } from './libs/types/common';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), //.env fayilni o'qish va invaletir varibilarni amaolga oshiryabmiz
+    ConfigModule.forRoot(), //.env fayilni o'qish va invalibr varibilarni amaolga oshiryabmiz
     GraphQLModule.forRoot({
      driver: ApolloDriver,
      playground: true,
      uploads: false,
      autoSchemaFile: true,
+    
      formatError: (error: T) => {
 				const graphQLFormattedError = {
-					code: error?.extensions.code,
+					code: error?.extensions?.code || 'BAD_REQUEST',
 					message:
                error?.extensions?.extension?.response?.message ||
 						   error?.extension?.response?.message ||
