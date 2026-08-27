@@ -145,7 +145,7 @@ files: Promise<FileUpload>[],
 	console.log('Mutation: imagesUploader');
 
 	const uploadedImages: string[] = [];
-	const promisedList = files.map(async (img: Promise<FileUpload>, index: number): Promise<Promise<void>> => {
+	const promisedList = files.map(async (img: Promise<FileUpload>, index: number): Promise<void> => {
 		try {
 			const { filename, mimetype, encoding, createReadStream } = await img;
 
