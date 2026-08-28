@@ -15,6 +15,8 @@ import { ViewModule } from '../view/view.module';
  AuthModule,
  ViewModule
 ], 
-  providers: [MemberResolver, MemberService]
+  providers: [MemberResolver, MemberService],
+  // PropertyModule ichida MemberService ishlatilishi uchun export qilindi.
+  exports: [MemberService]
 })
 export class MemberModule {}
