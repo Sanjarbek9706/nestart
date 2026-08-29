@@ -155,21 +155,15 @@ export class MemberService {
 	}
 
 	public async memberStatsEditor(input: StatisticModifier): Promise<Member> {
-		console.log('executed');
 		const { _id, targetKey, modifier } = input;
-
-		// MongoDB filter object kutadi; member topilmasa null natijani xatoga aylantiramiz.
-		const result = await this.memberModel
+		return await this.memberModel
 			.findOneAndUpdate(
-				{ _id },
+				_id,
 				{
 					$inc: { [targetKey]: modifier },
 				},
 				{ new: true },
 			)
 			.exec();
-
-		if (!result) throw new InternalServerErrorException(Message.UPDATE_FAILED);
-		return result;
 	}
 }
