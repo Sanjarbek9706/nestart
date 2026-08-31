@@ -205,6 +205,8 @@ export class PropertyService {
 		return result[0];
 	}
 
+	/******************************* ADMIN *************/
+
 	public async getAllPropertiesByAdmin(input: AllPropertiesInquiry): Promise<Properties> {
 		const { propertyStatus, propertyLocationList } = input.search;
 		const match: T = {};
