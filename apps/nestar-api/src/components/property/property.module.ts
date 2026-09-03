@@ -6,6 +6,7 @@ import PropertySchema from '../../schemas/Property.model';
 import { ViewModule } from '../view/view.module';
 import { AuthModule } from '../auth/auth.module';
 import { MemberModule } from '../member/member.module';
+import { LikeModule } from '../like/like.module';
 
 @Module({
      imports: [
@@ -18,7 +19,8 @@ import { MemberModule } from '../member/member.module';
 	     AuthModule,
 	     ViewModule,
 	     // MemberService dependencysini PropertyServicega beradi.
-	     MemberModule
+	     MemberModule,
+	     LikeModule
 	    ],
     providers: [PropertyResolver, PropertyService],
 	exports: [PropertyService]
