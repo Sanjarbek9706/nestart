@@ -5,54 +5,47 @@ import { BATCH_ROLLBACK, BATCH_TOP_AGENTS, BATCH_TOP_PROPERTIES } from './lib/co
 
 @Controller()
 export class BatchController {
-  private readonly logger = new Logger(BatchController.name);
+  private logger: Logger = new Logger('BatchController');
 
   constructor(private readonly batchService: BatchService) {}
 
   @Timeout(1000)
-  handleTimeout(): void {
+  handleTimeout() {
     this.logger.debug('BATCH SERVER READY!');
   }
 
-  @Cron('00 * * * * *', { name: BATCH_ROLLBACK })
+  @Cron('00 00 01 * * *', { name: BATCH_ROLLBACK })
   public async batchRollback() {
     try {
-      this.logger.log['context'] = BATCH_ROLLBACK;
+      this.logger['context'] = BATCH_ROLLBACK;
       this.logger.debug('EXECUTED!');
       await this.batchService.batchRollback();
-    } catch (error) {
-      this.logger.error('Error occurred while executing batchRollback');
+    } catch (err) {
+      this.logger.error(err);
     }
   }
 
-  @Cron('20 * * * * *', { name: BATCH_TOP_PROPERTIES })
-  public async batchProperties() {
+  @Cron('20 00 01 * * *', { name: BATCH_TOP_PROPERTIES })
+  public async batchTopProperties() {
     try {
-      this.logger.log['context'] = BATCH_TOP_PROPERTIES;
+      this.logger['context'] = BATCH_TOP_PROPERTIES;
       this.logger.debug('EXECUTED!');
-      await this.batchService.batchProperties();
-    } catch (error) {
-      this.logger.error('Error occurred while executing batchProperties');
+      await this.batchService.batchTopProperties();
+    } catch (err) {
+      this.logger.error(err);
     }
   }
 
-  @Cron('40 * * * * *', { name: BATCH_TOP_AGENTS })
-  public async batchAgents() {
+  @Cron('40 00 01 * * *', { name: BATCH_TOP_AGENTS })
+  public async batchTopAgents() {
     try {
-      this.logger.log['context'] = BATCH_TOP_AGENTS;
+      this.logger['context'] = BATCH_TOP_AGENTS;
       this.logger.debug('EXECUTED!');
-      await this.batchService.batchAgents();
-    } catch (error) {
-      this.logger.error('Error occurred while executing batchAgents');
+      await this.batchService.batchTopAgents();
+    } catch (err) {
+      this.logger.error(err);
     }
   }
-
-  /**
-   * @Interval(1000)
-   * handleInterval(): void {
-   *   this.logger.debug('INTERVAL TEST');
-   * }
-   */
 
   @Get()
   getHello(): string {
